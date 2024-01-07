@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/dist/output.css">
+    <link rel="stylesheet" href="/src/style.css">
+</head>
+<body class="w-screen min-h-screen bg-primary font-inter">
+    <header class="h-screen pt-40">
+        <nav class="shadow-md backdrop-blur-lg bg-transparent md:px-11 md:py-6 flex items-center justify-between fixed w-full top-0 z-30">
+            <a href="" class="font-lack text-5xl">WEBUS</a>
+            <div class="flex text-secondary">
+                <ul class="flex mr-32 font-medium">
+                    <li class="md:mr-7"><a href="">Accueil</a> </li>
+                    <li class="md:mr-7"><a href="">Nos services</a> </li>
+                    <li><a href="">Contact</a></li>
+                </ul>
+                <a href="login.html" class="font-semibold">Se connecter</a>
+            </div>
+        </nav>
+        <p class=" mt-16 text-4xl mx-auto text-secondary text-center  font-medium">Bienvenue sur le chemin de l'apprentissage avec <br>
+        </p>
+        <h1 class="text-9xl my-16 text-center font-lack webus">WEBUS</h1>
+        <div class="px-36 h-fit">
+            <p class="text-secondary font-semibold text-xl">Facilitez le transport de vos enfants avec une solution simple et écologique</p>
+            <p class="text-secondary font-semibold text-xl mt-16 mb-8">
+                Le pédibus est le moyen de transport le   
+                <span class="text-third">plus écologique</span>  et le plus agréable <br> pour emmener vos enfants à l’école  <span class="text-third">en toute sécurité</span></p>
+            <a href="#main" class="bg-third py-3 px-16 rounded-xl text-primary font-medium">En savoir plus</a>
+        </div>
+    </header>
+    <section class="h-screen w-screen px-36 pt-20 text-primary relative border-b-2 border-secondary" id="main">
+        <h2 class="font-semibold mt-16 text-3xl text-third">Comment ça marche ?</h2>
+        <section class=" w-3/4 mx-auto px-16 mt-16 border  rounded-xl  boxShadow backdrop-blur-md ">
+            <div class="flex flex-col py-10 w-full text-lg how-container text-secondary">
+                <div class="flex justify-between items-center">
+                    <p>Chaque matin vos enfants attendent à un arrêt de la ligne pedibus</p>
+                    <img src="src/assets/images/work/kids.svg" alt="">
+                </div>
+                <div class="flex justify-between items-center mt-16">
+                    <p class="pr-24">Un adulte est désigné comme accompagnateur. Il est facilement identifiable par une tenue signalétique fluorescente et un panneau </p>
+                    <img src="src/assets/images/work/parent.svg" alt="">
+                </div>
+                <div class="flex justify-between items-center mt-16">
+                    <p>Les enfants sont accompagnés à l’école à pied et en toute sécurité</p>
+                    <img src="src/assets/images/work/school.svg" alt="">
+                </div>
+            </div>
+        </section>
+        <div class="absolute top-0 left-0 w-screen h-screen nature-wrapper -z-10 overflow-hidden border-b-2 border-secondary">
+            <img src="src/assets/images/work/nature/flower.svg" alt="" class="rotate-45 absolute -left-6 top-1/2" id="first-flower">
+            <img src="src/assets/images/work/nature/tree.svg" alt="" class="-rotate-45 absolute -right-10 top-1/4 " id="first-tree">
+            <div class="w-full absolute bottom-0 left-0 flowers-bottom">
+                <img src="src/assets/images/work/nature/flower-2.svg" alt="" class="absolute bottom-0">
+                <img src="src/assets/images/work/nature/flower-3.svg" alt="" class="absolute -bottom-3 left-56 b">
+                <img src="src/assets/images/work/nature/flowers-4.svg" alt="" class="absolute -bottom-3 right-56">
+            </div>
+        </div>
+    </section>
+    <section class="h-screen w-screen px-36">
+
+    </section>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/ScrollTrigger.min.js"></script>
+    <script src="src/js/gsap.js"></script>
+</body>
+</html>
