@@ -8,7 +8,7 @@ header("Access-Control-Allow-Headers: *");
 
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-    $personnes = $cnx->query("SELECT id, last_name, first_name, birthdate,address,zipcode,phone_number_1,phone_number_2,mail FROM user");
+    $personnes = $cnx->query("SELECT id, last_name, first_name, birthdate,id_user_parent,id_line,id_step FROM child");
 
     $data = array();
 
@@ -17,49 +17,42 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             "id" => $personne['id'],
             "last_name" => $personne['last_name'],
             "first_name" => $personne["first_name"],
-            "birthdate" => $personne["birthdate"],
-            "address" => $personne["address"],
-            "zipcode" => $personne["zipcode"],
-            "phone_number_1" => $personne["phone_number_1"],
-            "mail" => $personne["mail"],
-
+            "id_user_parent" => $personne["id_user_parent"],
+            "id_line" => $personne["id_line"],
+            "id_step" => $personne["id_step"],
         ];
     }
 
     echo json_encode($data);
 }
 elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $hashedPassword = password_hash($_POST['password'], PASSWORD_DEFAULT);
     $currentDateTime = date('Y-m-d H:i:s');
-    $upd = $cnx->prepare("INSERT INTO user SET last_name = ?, first_name = ?, birthdate = ?, address = ?, zipcode = ?, phone_number_1 = ?,phone_number_2 = ?, mail = ?, password = ?, created_at = ?, updated_at = ?");
+    $upd = $cnx->prepare("INSERT INTO child SET last_name = ?, first_name = ?, birthdate = ?, id_user_parent = ?, id_line = ?, id_step = ?, created_at = ?, updated_at = ?");
 
     if ($upd->execute([
         $_POST['lastName'],
         $_POST['firstName'],
         $currentDateTime,
-        $_POST['address'],
-        $_POST['zipcode'],
-        $_POST['phone_number_1'],
-        $_POST['phone_number_2'],
-        $_POST['mail'],
-        $hashedPassword,
+        $_POST['parent'],
+        $_POST['line'],
+        $_POST['step'],
         $currentDateTime,  
-        $currentDateTime  
+        $currentDateTime,
     ])) {
-        echo json_encode(["message" => "Utilisateur créé avec succès"]);
+        echo json_encode(["message" => "Enfant créé avec succès"]);
     } else {
-        echo json_encode(["message" => "Erreur lors de la création de l'utilisateur"]);
+        echo json_encode(["message" => "Erreur lors de la création de l'enfant"]);
     }
 }
 
 elseif ($_SERVER['REQUEST_METHOD'] == 'DELETE') {
     $parse = file_get_contents('php://input');
     $data = json_decode($parse);
-    $upd = $cnx->prepare("DELETE FROM user WHERE id = ?");
+    $upd = $cnx->prepare("DELETE FROM child WHERE id = ?");
     if ($upd->execute([$data->id])) {
-        echo json_encode(["message" => "Utilisateur supprimé avec succès"]);
+        echo json_encode(["message" => "Enfant supprimé avec succès"]);
     } else {
-        echo json_encode(["message" => "Erreur lors de la suppression de l'utilisateur"]);
+        echo json_encode(["message" => "Erreur lors de la suppression de l'enfant"]);
     }
 }
 elseif ($_SERVER['REQUEST_METHOD'] == 'PATCH') {
@@ -89,35 +82,22 @@ elseif ($_SERVER['REQUEST_METHOD'] == 'PATCH') {
         $params[] = $data->birthdate;
     }
     
-    if (isset($data->address)) {
-        $setValues[] = "address = ?";
-        $params[] = $data->address;
+    if (isset($data->id_user_parent)) {
+        $setValues[] = "id_user_parent = ?";
+        $params[] = $data->id_user_parent;
     }
     
-    if (isset($data->zipcode)) {
-        $setValues[] = "zipcode = ?";
-        $params[] = $data->zipcode;
+    if (isset($data->id_line)) {
+        $setValues[] = "id_line = ?";
+        $params[] = $data->id_line;
     }
     
-    if (isset($data->phone_number_1)) {
-        $setValues[] = "phone_number_1 = ?";
-        $params[] = $data->phone_number_1;
+    
+    if (isset($data->id_step)) {
+        $setValues[] = "id_step = ?";
+        $params[] = $data->id_step;
     }
     
-    if (isset($data->phone_number_2)) {
-        $setValues[] = "phone_number_2 = ?";
-        $params[] = $data->phone_number_2;
-    }
-    
-    if (isset($data->mail)) {
-        $setValues[] = "mail = ?";
-        $params[] = $data->mail;
-    }
-    
-    if (isset($data->password)) {
-        $setValues[] = "password = ?";
-        $params[] = $data->password;
-    }
     
     $setValues[] = "updated_at = ?";
     $params[] = $currentDateTime;
@@ -130,12 +110,12 @@ elseif ($_SERVER['REQUEST_METHOD'] == 'PATCH') {
 
     $params[] = $data->id; 
     $setClause = implode(', ', $setValues);
-    $upd = $cnx->prepare("UPDATE user SET $setClause WHERE id = ?");
+    $upd = $cnx->prepare("UPDATE child SET $setClause WHERE id = ?");
     
     if ($upd->execute($params)) {
-        echo json_encode(["message" => "Utilisateur mis à jour avec succès"]);
+        echo json_encode(["message" => "Enfant mis à jour avec succès"]);
     } else {
-        echo json_encode(["message" => "Erreur lors de la mise à jour de l'utilisateur"]);
+        echo json_encode(["message" => "Erreur lors de la mise à jour de l'enfant"]);
     }
 } else {
     http_response_code(405); 
