@@ -10,7 +10,7 @@ gsap.from('.how-container div', {
         trigger: howItWorks,
         start: "top center",
         end: "bottom center",
-        toggleActions: "play reverse play reverse",
+        toggleActions: "play none play reverse",
         markers: true,
     }, 
     opacity: 0,
@@ -19,28 +19,7 @@ gsap.from('.how-container div', {
     stagger: 0.3,
 });
 
-// const flowerTl = gsap.timeline({
-//     scrollTrigger: {
-//         trigger: natureWrapper,
-//         start: "top center",
-//         toggleActions: "play none none reverse",
-//     }
-// });
 
-// flowerTl.from(firstFlower, {
-//     x: -200,
-//     y: 100,
-//     duration: 1,
-//     stagger: 0.3,
-//     delay: 0.8
-// })
-// .to(firstTree, {
-//     x: -200,
-//     y: 100,
-//     duration: 1,
-//     stagger: 0.3,
-//     delay: 0.8
-// });
 
 gsap.from(firstFlower, {
     scrollTrigger: {

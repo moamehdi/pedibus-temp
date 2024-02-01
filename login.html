@@ -38,33 +38,33 @@
                     <img src="/src/assets/images/form/cross.svg" alt="" class="w-4 mt-4 ml-auto mr-4 close-cross cursor-pointer">
                     <h2 class="ml-7 text-xl text-secondary font-medium mb-8">Créer mon compte Webus</h2>
             </div>
-            <form class="px-18 mt-8 flex flex-col items-center">
+            <form class="px-18 mt-8 flex flex-col items-center" action="api/user.php" method="post">
                 <div class="w-full flex flex-col items-center">
                     <div class="border-b-2 border-gray-300 w-full">
                         <p class="text-lg font-medium text-secondary mb-3 text-center">Informations personnelles</p>
                     </div>
                     <div class="self-start mt-7 w-full">
                         <label for="lastName" class="text-secondary font-medium text-sm">Nom : <span class="text-[#c70000] font-medium">*</span></label>
-                        <input type="text" placeholder="Entrez votre nom" class="w-full rounded-md shadow-sm py-2 pl-3 placeholder:text-slate-400 text-sm mt-2 mb-3">
+                        <input name="lastName" type="text" placeholder="Entrez votre nom" class="w-full rounded-md shadow-sm py-2 pl-3 placeholder:text-slate-400 text-sm mt-2 mb-3">
                         <label for="firstName" class="text-secondary font-medium text-sm">Prénom : <span class="text-[#c70000] font-medium">*</span></label>
-                        <input type="text" placeholder="Entrez votre prénom" class="w-full rounded-md shadow-sm py-2 pl-3 placeholder:text-slate-400 text-sm mt-2 mb-3">
+                        <input name="firstName" type="text" placeholder="Entrez votre prénom" class="w-full rounded-md shadow-sm py-2 pl-3 placeholder:text-slate-400 text-sm mt-2 mb-3">
                         <label for="birthdate" class="text-secondary font-medium text-sm">Date de naissance : <span class="text-[#c70000] font-medium">*</span></label>
-                        <input type="email" placeholder="jj/mm/aaaa" class="w-full rounded-md shadow-sm py-2 pl-3 placeholder:text-slate-400 text-sm mt-2 mb-3">
+                        <input type="date" placeholder="jj/mm/aaaa" class="w-full rounded-md shadow-sm py-2 pl-3 placeholder:text-slate-400 text-sm mt-2 mb-3">
                     </div>
                     <div class="border-b-2 border-gray-300 mt-7 w-full">
                         <p class="text-lg font-medium text-secondary mb-3 text-center">Coordonnées</p>
                     </div>
                     <div class="self-start mt-7 w-full">
                         <label for="email" class="text-secondary font-medium text-sm">Email : <span class="text-[#c70000] font-medium">*</span></label>
-                        <input type="mail" placeholder="Entrez votre email" class="w-full rounded-md shadow-sm py-2 pl-3 placeholder:text-slate-400 text-sm mt-2 mb-3">
+                        <input name="mail" type="mail" placeholder="Entrez votre email" class="w-full rounded-md shadow-sm py-2 pl-3 placeholder:text-slate-400 text-sm mt-2 mb-3">
                         <label for="password" class="text-secondary font-medium text-sm">Mot de passe : <span class="text-[#c70000] font-medium">*</span></label>
-                        <input type="password" placeholder="Entrez votre mot de passe" class="w-full rounded-md shadow-sm py-2 pl-3 placeholder:text-slate-400 text-sm mt-2 mb-3">
+                        <input name="password" type="password" placeholder="Entrez votre mot de passe" class="w-full rounded-md shadow-sm py-2 pl-3 placeholder:text-slate-400 text-sm mt-2 mb-3">
                         <label for="tel" class="text-secondary font-medium text-sm">Numéro de téléphone : <span class="text-[#c70000] font-medium">*</span></label>
-                        <input type="text" placeholder="06 06 06 06 06" class="w-full rounded-md shadow-sm py-2 pl-3 placeholder:text-slate-400 text-sm mt-2 mb-3">
+                        <input name="phone_number_1" type="text" placeholder="06 06 06 06 06" class="w-full rounded-md shadow-sm py-2 pl-3 placeholder:text-slate-400 text-sm mt-2 mb-3">
                         <label for="address" class="text-secondary font-medium text-sm">Adresse : <span class="text-[#c70000] font-medium">*</span></label>
-                        <input type="email" placeholder="Entrez votre adresse postale" class="w-full rounded-md shadow-sm py-2 pl-3 placeholder:text-slate-400 text-sm mt-2 mb-3">
+                        <input name="address" type="text" placeholder="Entrez votre adresse postale" class="w-full rounded-md shadow-sm py-2 pl-3 placeholder:text-slate-400 text-sm mt-2 mb-3">
                         <label for="zipcode" class="text-secondary font-medium text-sm">Code postal : <span class="text-[#c70000] font-medium">*</span></label>
-                        <input type="text" placeholder="Entrez votre code postal" class="w-full rounded-md shadow-sm py-2 pl-3 placeholder:text-slate-400 text-sm mt-2 mb-3">
+                        <input name="zipcode" type="text" placeholder="Entrez votre code postal" class="w-full rounded-md shadow-sm py-2 pl-3 placeholder:text-slate-400 text-sm mt-2 mb-3">
                         <label for="city" class="text-secondary font-medium text-sm">Ville : <span class="text-[#c70000] font-medium">*</span></label>
                         <input type="text" placeholder="Entrez votre ville" class="w-full rounded-md shadow-sm py-2 pl-3 placeholder:text-slate-400 text-sm mt-2 mb-3">
                     </div>

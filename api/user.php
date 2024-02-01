@@ -29,6 +29,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     echo json_encode($data);
 }
 elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    die($_POST);
+    exit;
+
     $hashedPassword = password_hash($_POST['password'], PASSWORD_DEFAULT);
     $currentDateTime = date('Y-m-d H:i:s');
     $upd = $cnx->prepare("INSERT INTO user SET last_name = ?, first_name = ?, birthdate = ?, address = ?, zipcode = ?, phone_number_1 = ?,phone_number_2 = ?, mail = ?, password = ?, created_at = ?, updated_at = ?");
