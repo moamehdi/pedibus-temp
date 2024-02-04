@@ -1,6 +1,6 @@
 <?php
-$host = "127.0.0.1";
-$database="qcqc_pedibus_api";
+$host = "mysql";
+$database="pedibus";
 $user ="axel";
 $pass="password";
 $charset = 'utf8mb4'; //encodage des caractères

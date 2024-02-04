@@ -9,12 +9,13 @@ header("Access-Control-Allow-Headers: *");
 
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-    $lines = $cnx->query("SELECT name, departure_hour, arrival_hour,is_active FROM line");
+    $lines = $cnx->query("SELECT id,name, departure_hour, arrival_hour,is_active FROM line");
 
     $data = array();
 
     foreach ($lines as $line) {
         $data[] = [
+            "id" => $line["id"],
             "name" => $line['name'],
             "departure_hour" => $line["departure_hour"],
             "arrival_hour" => $line["arrival_hour"],
