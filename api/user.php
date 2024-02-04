@@ -29,19 +29,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     echo json_encode($data);
 }
 elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $hashedPassword = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    $parse = file_get_contents('php://input');
+    $data = json_decode($parse);
+
+    $hashedPassword = password_hash($data['password'], PASSWORD_DEFAULT);
     $currentDateTime = date('Y-m-d H:i:s');
     $upd = $cnx->prepare("INSERT INTO user SET last_name = ?, first_name = ?, birthdate = ?, address = ?, zipcode = ?, phone_number_1 = ?,phone_number_2 = ?, mail = ?, password = ?, created_at = ?, updated_at = ?");
 
     if ($upd->execute([
-        $_POST['lastName'],
-        $_POST['firstName'],
+        $data['lastName'],
+        $data['firstName'],
         $currentDateTime,
-        $_POST['address'],
-        $_POST['zipcode'],
-        $_POST['phone_number_1'],
-        $_POST['phone_number_2'],
-        $_POST['mail'],
+        $data['address'],
+        $data['zipcode'],
+        $data['phone_number_1'],
+        // $data['phone_number_2'],
+        $data['mail'],
         $hashedPassword,
         $currentDateTime,  
         $currentDateTime  
@@ -50,6 +53,7 @@ elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } else {
         echo json_encode(["message" => "Erreur lors de la création de l'utilisateur"]);
     }
+    
 }
 
 elseif ($_SERVER['REQUEST_METHOD'] == 'DELETE') {
