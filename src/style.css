@@ -39,7 +39,7 @@ body {
     font-family: 'Inter', sans-serif;
 }
 
-nav {
+#home-nav {
     transform: translate(0, -20px);
     opacity: 0;
     animation: apparition 0.5s ease-in-out 1.2s forwards;
@@ -73,6 +73,11 @@ nav {
     transform: translate(0, -20px);
     opacity: 0;
     animation: apparition 0.5s ease-in-out 0.6s forwards;
+}
+
+#first-tree {
+    width: 800px;
+    height: 800px;
 }
 
 #welcome-section {
