@@ -20,6 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if ($user && password_verify($password, $user['password'])) {
+        $_SESSION['user_id'] = $user['id'];
         echo json_encode(["message" => "Connexion réussie", "data" => $data]);
     } else {
         echo json_encode(["message" => "Identifiants invalides", "data" => $data]);

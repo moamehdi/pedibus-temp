@@ -1,3 +1,18 @@
+<?php
+require_once('./api/bdd.php');
+
+session_start();
+
+// var_dump($_SESSION);
+$upd = $cnx->prepare("SELECT id, last_name, first_name, birthdate,address,zipcode,phone_number_1,phone_number_2,mail  FROM user WHERE id = ?");
+    
+$upd->bindParam(1, $_SESSION['user_id'], PDO::PARAM_INT);
+
+$upd->execute();
+    
+$personne = $upd->fetch(PDO::FETCH_ASSOC);
+// var_dump($personne);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -69,7 +84,7 @@
         </section>
         <section class="w-5/6 h-screen bg-primary flex flex-col">
             <header class="w-full flex justify-between items-center p-8 border-b border-b-slate-200">
-                <h1 class="text-secondary font-medium text-2xl">Bonjour Axel Augis</h1>
+                <h1 class="text-secondary font-medium text-2xl">Bonjour <?= $personne['first_name'] . ' ' . $personne['last_name'] ?></h1>
                 <nav class="flex">
                     <button><img src="src/assets/images/profile/mail.svg" alt="" class="mr-2"></button>
                     <button><img src="src/assets/images/profile/notification.svg" alt="" class="mr-8"></button>
