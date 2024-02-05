@@ -9,6 +9,7 @@
 </head>
 <body class="min-h-screen">
     <main class="flex font-inter">
+        <!-- Dashboar sidebar -->
         <section class="h-screen w-1/6 flex flex-col bg-lightBlue text-white">
             <div class="rounded-full h-24 w-24 avatar mx-auto mt-7"></div>
             <button class="ml-6 w-fit my-16 text-xl">Tableau de bord</button>
@@ -40,24 +41,31 @@
                 <!-- Calendar Tab -->
                 <div class="flex flex-col h-1/4 overflow-hidden p-3" id="calendar-wrapper">
                     <div class="flex justify-between cursor-pointer" id="calendar-header">
-                        <div class="flex items
-                        -center">
+                        <div class="flex items-center">
                             <img src="src/assets/images/profile/dashboard/calendar.svg" alt="" class="w-7 mr-3">
-                            <a href="profile.htmlr">Calendrier</a>
+                            <a href="profile.html">Calendrier</a>
                         </div>
                     </div>
                 </div>
                 <!-- Settings Tab -->
                 <div class="flex flex-col h-1/4 overflow-hidden p-3" id="settings-wrapper">
                     <div class="flex justify-between cursor-pointer" id="settings-header">
-                        <div class="flex items
-                        -center">
+                        <div class="flex items-center">
                             <img src="src/assets/images/profile/dashboard/settings.svg" alt="" class="w-7 mr-3">
-                            <a href="profile.htmlr">Paramètres</a>
+                            <a href="profile.html">Paramètres</a>
                         </div>
                     </div>
                 </div>
             </div>
+            <!-- Logout Tab -->
+                <div class="flex flex-col mt-auto  overflow-hidden p-3" id="logout-wrapper">
+                    <div class="flex justify-between cursor-pointer" id="logout-header">
+                        <div class="flex items-center">
+                            <img src="src/assets/images/profile/dashboard/logout.svg" alt="" class="w-7 mr-3">
+                            <a href="profile.html">Déconnexion</a>
+                        </div>
+                    </div>
+                </div>
         </section>
         <section class="w-5/6 h-screen bg-primary flex flex-col">
             <header class="w-full flex justify-between items-center p-8 border-b border-b-slate-200">
