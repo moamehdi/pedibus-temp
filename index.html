@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/dist/output.css">
     <link rel="stylesheet" href="/src/style.css">
 </head>
-<body class="w-screen min-h-screen bg-[#ffffff] font-inter">
+<body class="w-screen min-h-screen bg-[#ffffff] font-inter loading-anim">
     <header class="h-screen pt-40">
         <nav class="shadow-md backdrop-blur-lg bg-transparent md:px-11 md:py-6 flex items-center justify-between fixed w-full top-0 z-30">
             <a href="" class="font-lack text-5xl">WEBUS</a>
@@ -21,12 +21,12 @@
                 <a href="login.html" class="font-semibold">Se connecter</a>
             </div>
         </nav>
-        <p class=" mt-16 text-4xl mx-auto text-secondary text-center  font-medium">Bienvenue sur le chemin de l'apprentissage avec <br>
+        <p class=" mt-16 text-4xl mx-auto text-secondary text-center  font-medium" id="welcome-text">Bienvenue sur le chemin de l'apprentissage avec
         </p>
         <h1 class="text-9xl my-16 text-center font-lack webus">WEBUS</h1>
-        <div class="px-36 h-fit">
+        <div class="px-36 h-fit" id="welcome-section">
             <p class="text-secondary font-semibold text-xl">Facilitez le transport de vos enfants avec une solution simple et écologique</p>
-            <p class="text-secondary font-semibold text-xl mt-16 mb-8">
+            <p class="text-secondary font-semibold text-xl mt-4 mb-8">
                 Le pédibus est le moyen de transport le   
                 <span class="text-third">plus écologique</span>  et le plus agréable <br> pour emmener vos enfants à l’école  <span class="text-third">en toute sécurité</span></p>
             <a href="#main" class="bg-third py-3 px-16 rounded-xl text-primary font-medium">En savoir plus</a>
@@ -50,7 +50,7 @@
                 </div>
             </div>
         </section>
-        <div class="absolute top-0 left-0 w-screen h-screen nature-wrapper -z-10 overflow-hidden border-b-2 border-green-500">
+        <div class="absolute top-0 left-0 w-screen h-screen nature-wrapper z-10 overflow-hidden border-b-2 border-green-500">
             <img src="src/assets/images/work/nature/flower.svg" alt="" class="rotate-45 absolute -left-6 top-1/2" id="first-flower">
             <img src="src/assets/images/work/nature/tree.svg" alt="" class="-rotate-45 absolute -right-10 top-1/4 " id="first-tree">
             <div class="w-full absolute bottom-0 left-0 flowers-bottom">
