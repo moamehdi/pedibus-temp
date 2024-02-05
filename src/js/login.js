@@ -23,7 +23,7 @@ registerForm.addEventListener('submit', async (e) => {
     let json = JSON.stringify(object);
  
 
-    const response = await fetch('http://localhost:80/api/user.php', {
+    const response = await fetch('http://localhost:8080/api/user.php', {
         method: 'POST',
         mode: 'cors',
         headers: {
