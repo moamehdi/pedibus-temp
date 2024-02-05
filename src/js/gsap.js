@@ -3,7 +3,8 @@ const howItWorks = document.querySelector(".how-container");
 const natureWrapper = document.querySelector(".nature-wrapper");
 const firstFlower = document.getElementById("first-flower");
 const firstTree = document.getElementById("first-tree");
-const flowersBottom = document.getElementById("flowers-bottom");
+const flowersBottom = document.querySelector(".flowers-bottom");
+console.log(howItWorks, natureWrapper, firstFlower, firstTree, flowersBottom);
 
 gsap.from('.how-container div', {
     scrollTrigger: {
@@ -11,7 +12,7 @@ gsap.from('.how-container div', {
         start: "top center",
         end: "bottom center",
         toggleActions: "play none play reverse",
-        markers: true,
+        // markers: true,
     }, 
     opacity: 0,
     x: -100,
