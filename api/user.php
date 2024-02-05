@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 }
 elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $parse = file_get_contents('php://input');
-    $data = json_decode($parse);
+    $data = json_decode($parse, true);
 
     $hashedPassword = password_hash($data['password'], PASSWORD_DEFAULT);
     $currentDateTime = date('Y-m-d H:i:s');
@@ -39,11 +39,11 @@ elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($upd->execute([
         $data['lastName'],
         $data['firstName'],
-        $currentDateTime,
+        $data['birthdate'],
         $data['address'],
         $data['zipcode'],
         $data['phone_number_1'],
-        // $data['phone_number_2'],
+        $data['phone_number_2'] ?? null,
         $data['mail'],
         $hashedPassword,
         $currentDateTime,  
