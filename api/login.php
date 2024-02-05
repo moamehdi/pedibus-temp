@@ -9,18 +9,23 @@ header("Access-Control-Allow-Headers: *");
 session_start(); // Commencez la session
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $mail = $_POST['mail'];
-    $password = $_POST['password'];
+    $parse = file_get_contents('php://input');
+    $data = json_decode($parse, true);
+
+    $mail = $data['mail'];
+    $password = $data['password'];
 
     $stmt = $cnx->prepare("SELECT id, mail, password FROM user WHERE mail = ?");
     $stmt->execute([$mail]);
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if ($user && password_verify($password, $user['password'])) {
-        echo json_encode(["message" => "Connexion réussie"]);
+        echo json_encode(["message" => "Connexion réussie", "data" => $data]);
     } else {
-     
-        echo json_encode(["message" => "Identifiants invalides"]);
+        echo json_encode(["message" => "Identifiants invalides", "data" => $data]);
     }
+} else {
+    // Gérer les autres cas (méthodes non prises en charge, etc.) si nécessaire
+    echo json_encode(["message" => "Méthode non prise en charge", "data" => null]);
 }
 ?>
