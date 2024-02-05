@@ -4,7 +4,7 @@ require_once('./api/bdd.php');
 session_start();
 
 // var_dump($_SESSION);
-$upd = $cnx->prepare("SELECT id, last_name, first_name, birthdate,address,zipcode,phone_number_1,phone_number_2,mail  FROM user WHERE id = ?");
+$upd = $cnx->prepare("SELECT id, last_name, first_name, birthdate,address,zipcode,phone_number_1,phone_number_2,mail,id_role  FROM user WHERE id = ?");
     
 $upd->bindParam(1, $_SESSION['user_id'], PDO::PARAM_INT);
 
@@ -29,6 +29,16 @@ $personne = $upd->fetch(PDO::FETCH_ASSOC);
             <div class="rounded-full h-24 w-24 avatar mx-auto mt-7"></div>
             <button class="ml-6 w-fit my-16 text-xl">Tableau de bord</button>
             <div class=" flex flex-col">
+            <?php if ($personne['id_role'] == 2): ?>
+            <div class="flex flex-col h-1/4 overflow-hidden p-3" id="settings-wrapper">
+                    <div class="flex justify-between cursor-pointer" id="settings-header">
+                        <div class="flex items-center">
+                            <img src="src/assets/images/profile/dashboard/admin.svg" alt="" class="w-7 mr-3">
+                            <a href="profile.html">Administration</a>
+                        </div>
+                    </div>
+                </div>
+                <?php endif; ?>
                 <!-- Profile Tab -->
                 <div class="flex flex-col h-1/4 overflow-hidden p-3" id="profile-wrapper">
                     <div class="flex justify-between cursor-pointer" id="profile-header">
@@ -39,10 +49,11 @@ $personne = $upd->fetch(PDO::FETCH_ASSOC);
                         <button id="profile-btn"><img src="src/assets/images/profile/dashboard/arrow.svg" alt="" id="profile-arrow"></button>
                     </div>
                     <div class="w-full mt-3" id="profile-menu">
-                        <div class="flex pl-6 items-center hover:bg-blue-500 bg-transparent rounded-lg py-1 transition-colors">
+                        <!-- <div class="flex pl-6 items-center hover:bg-blue-500 bg-transparent rounded-lg py-1 transition-colors">
                             <img src="src/assets/images/profile/dashboard/admin.svg" alt="">
+                            
                             <a href="profile.html"  class="ml-2 ">Administration</a>
-                        </div>
+                        </div> -->
                         <div class="flex pl-6 items-center mt-3 hover:bg-blue-500 bg-transparent rounded-lg py-1 transition-colors">
                             <img src="src/assets/images/profile/dashboard/admin.svg" alt="">
                             <a href="profile.html"  class="ml-2 ">Mes informations</a>
