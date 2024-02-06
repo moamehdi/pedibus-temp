@@ -32,6 +32,9 @@ registerForm.addEventListener('submit', async (e) => {
         body: json
     }).then(response => response.json())
     console.log(response);
+    if (response.message == "Utilisateur créé avec succès") {
+        registerWrapper.classList.remove('active-register-wrapper');
+    }
     return true
 })
 
