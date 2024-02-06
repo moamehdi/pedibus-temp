@@ -56,6 +56,10 @@ loginForm.addEventListener('submit', async (e) => {
         },
         body: json
     }).then(response => response.json())
-    console.log(response);
+    console.log(response.message);
+    if (response.message == "Connexion réussie") {
+        // Rediriger l'utilisateur vers profile.php
+        window.location.href = 'profile.php';
+    }
     return true
 })
