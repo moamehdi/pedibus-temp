@@ -34,7 +34,7 @@ $personne = $upd->fetch(PDO::FETCH_ASSOC);
                     <div class="flex justify-between cursor-pointer" id="settings-header">
                         <div class="flex items-center">
                             <img src="src/assets/images/profile/dashboard/admin.svg" alt="" class="w-7 mr-3">
-                            <a href="profile.html">Administration</a>
+                            <a href="admin.php">Administration</a>
                         </div>
                     </div>
                 </div>
@@ -52,15 +52,15 @@ $personne = $upd->fetch(PDO::FETCH_ASSOC);
                         <!-- <div class="flex pl-6 items-center hover:bg-blue-500 bg-transparent rounded-lg py-1 transition-colors">
                             <img src="src/assets/images/profile/dashboard/admin.svg" alt="">
                             
-                            <a href="profile.html"  class="ml-2 ">Administration</a>
+                            <a href="profile.php"  class="ml-2 ">Administration</a>
                         </div> -->
                         <div class="flex pl-6 items-center mt-3 hover:bg-blue-500 bg-transparent rounded-lg py-1 transition-colors">
                             <img src="src/assets/images/profile/dashboard/admin.svg" alt="">
-                            <a href="profile.html"  class="ml-2 ">Mes informations</a>
+                            <a href="profile.php"  class="ml-2 ">Mes informations</a>
                         </div>
                         <div class="flex pl-6 items-center mt-3 hover:bg-blue-500 bg-transparent rounded-lg py-1 transition-colors">
                             <img src="src/assets/images/profile/dashboard/admin.svg" alt="">
-                            <a href="profile.html"  class="ml-2 ">Mes enfants</a>
+                            <a href="profile.php"  class="ml-2 ">Mes enfants</a>
                         </div>
                     </div>
                 </div>
@@ -69,7 +69,7 @@ $personne = $upd->fetch(PDO::FETCH_ASSOC);
                     <div class="flex justify-between cursor-pointer" id="calendar-header">
                         <div class="flex items-center">
                             <img src="src/assets/images/profile/dashboard/calendar.svg" alt="" class="w-7 mr-3">
-                            <a href="profile.html">Calendrier</a>
+                            <a href="profile.php">Calendrier</a>
                         </div>
                     </div>
                 </div>
@@ -78,7 +78,7 @@ $personne = $upd->fetch(PDO::FETCH_ASSOC);
                     <div class="flex justify-between cursor-pointer" id="settings-header">
                         <div class="flex items-center">
                             <img src="src/assets/images/profile/dashboard/settings.svg" alt="" class="w-7 mr-3">
-                            <a href="profile.html">Paramètres</a>
+                            <a href="profile.php">Paramètres</a>
                         </div>
                     </div>
                 </div>
@@ -88,7 +88,7 @@ $personne = $upd->fetch(PDO::FETCH_ASSOC);
                     <div class="flex justify-between cursor-pointer" id="logout-header">
                         <div class="flex items-center">
                             <img src="src/assets/images/profile/dashboard/logout.svg" alt="" class="w-7 mr-3">
-                            <a href="profile.html">Déconnexion</a>
+                            <a href="profile.php">Déconnexion</a>
                         </div>
                     </div>
                 </div>

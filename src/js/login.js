@@ -23,7 +23,7 @@ registerForm.addEventListener('submit', async (e) => {
     let json = JSON.stringify(object);
  
  
-    const response = await fetch('http://localhost:8080/pedibus/api/users.php', {
+    const response = await fetch('http://localhost:80/pedibus/api/users.php', {
         method: 'POST',
         mode: 'cors',
         headers: {
@@ -51,7 +51,7 @@ loginForm.addEventListener('submit', async (e) => {
     let json = JSON.stringify(object);
  
  
-    const response = await fetch('http://localhost:8080/pedibus/api/login.php', {
+    const response = await fetch('http://localhost:80/pedibus/api/login.php', {
         method: 'POST',
         mode: 'cors',
         headers: {
