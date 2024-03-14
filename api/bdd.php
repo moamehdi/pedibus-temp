@@ -1,7 +1,7 @@
 <?php
-$host = "mysql";
-$database="pedibus";
-$user ="axel";
+$host = "127.0.0.1";
+$database="qcqc_pedibus_api";
+$user ="root";
 $pass="password";
 $charset = 'utf8mb4'; //encodage des caractères
 //script de connexion PDO
