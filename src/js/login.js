@@ -1,20 +1,20 @@
 const registerWrapper = document.querySelector('.register-wrapper');
 const registerButton = document.querySelector('.register-login-button');
-
+ 
 const closeCross = document.querySelector('.close-cross');
-
+ 
 registerButton.addEventListener('click', () => {
     registerWrapper.classList.toggle('active-register-wrapper');
 });
-
+ 
 closeCross.addEventListener('click', () => {
     registerWrapper.classList.toggle('active-register-wrapper');
 });
-
+ 
 const registerForm = document.getElementById('register-form');
 registerForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-
+ 
     let formData = new FormData(registerForm);
     let object = {};
     formData.forEach(function(value, key){
@@ -22,8 +22,8 @@ registerForm.addEventListener('submit', async (e) => {
     });
     let json = JSON.stringify(object);
  
-
-    const response = await fetch('http://localhost:8080/api/users.php', {
+ 
+    const response = await fetch('http://localhost:8080/pedibus/api/users.php', {
         method: 'POST',
         mode: 'cors',
         headers: {
@@ -32,14 +32,17 @@ registerForm.addEventListener('submit', async (e) => {
         body: json
     }).then(response => response.json())
     console.log(response);
+    if (response.message == "Utilisateur créé avec succès") {
+        registerWrapper.classList.remove('active-register-wrapper');
+    }
     return true
 })
-
+ 
 const loginForm = document.getElementById('login-form')
-
+ 
 loginForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-
+ 
     let formData = new FormData(loginForm);
     let object = {};
     formData.forEach(function(value, key){
@@ -47,8 +50,8 @@ loginForm.addEventListener('submit', async (e) => {
     });
     let json = JSON.stringify(object);
  
-
-    const response = await fetch('http://localhost:8080/api/login.php', {
+ 
+    const response = await fetch('http://localhost:8080/pedibus/api/login.php', {
         method: 'POST',
         mode: 'cors',
         headers: {
@@ -56,6 +59,10 @@ loginForm.addEventListener('submit', async (e) => {
         },
         body: json
     }).then(response => response.json())
-    console.log(response);
+    console.log(response.message);
+    if (response.message == "Connexion réussie") {
+        // Rediriger l'utilisateur vers profile.php
+        window.location.href = 'profile.php';
+    }
     return true
 })
