@@ -3,42 +3,35 @@ require_once('./api/bdd.php');
 
 session_start();
 
-// var_dump($_SESSION);
-$upd = $cnx->prepare("SELECT id, last_name, first_name, birthdate,address,zipcode,phone_number_1,phone_number_2,mail,id_role  FROM user WHERE id = ?");
+$upd = $cnx->prepare("SELECT u.id, u.last_name, u.first_name, u.birthdate, u.address, u.zipcode, u.phone_number_1, u.phone_number_2, u.mail, u.id_role, r.name AS role_name FROM user u LEFT JOIN role r ON u.id_role = r.id WHERE u.id = ?");
     
 $upd->bindParam(1, $_SESSION['user_id'], PDO::PARAM_INT);
 
 $upd->execute();
-    
+
 $personne = $upd->fetch(PDO::FETCH_ASSOC);
-// var_dump($personne);
+
+$usersQuery = $cnx->query("SELECT u.id, u.last_name, u.first_name, u.birthdate, u.address, u.zipcode, u.phone_number_1, u.phone_number_2, u.mail, u.id_role, r.name AS role_name FROM user u LEFT JOIN role r ON u.id_role = r.id");
+$users = $usersQuery->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Profile</title>
     <link rel="stylesheet" href="src/style.css">
     <link rel="stylesheet" href="dist/output.css">
 </head>
 <body class="min-h-screen">
     <main class="flex font-inter">
-        <!-- Dashboar sidebar -->
         <section class="h-screen w-1/6 flex flex-col bg-lightBlue text-white">
             <div class="rounded-full h-24 w-24 avatar mx-auto mt-7"></div>
             <button class="ml-6 w-fit my-16 text-xl">Tableau de bord</button>
             <div class=" flex flex-col">
-            <?php if ($personne['id_role'] == 2): ?>
-            <div class="flex flex-col h-1/4 overflow-hidden p-3" id="settings-wrapper">
-                    <div class="flex justify-between cursor-pointer" id="settings-header">
-                        <div class="flex items-center">
-                            <img src="src/assets/images/profile/dashboard/admin.svg" alt="" class="w-7 mr-3">
-                            <a href="admin.php">Administration</a>
-                        </div>
-                    </div>
-                </div>
-                <?php endif; ?>
                 <!-- Profile Tab -->
                 <div class="flex flex-col h-1/4 overflow-hidden p-3" id="profile-wrapper">
                     <div class="flex justify-between cursor-pointer" id="profile-header">
@@ -49,11 +42,6 @@ $personne = $upd->fetch(PDO::FETCH_ASSOC);
                         <button id="profile-btn"><img src="src/assets/images/profile/dashboard/arrow.svg" alt="" id="profile-arrow"></button>
                     </div>
                     <div class="w-full mt-3" id="profile-menu">
-                        <!-- <div class="flex pl-6 items-center hover:bg-blue-500 bg-transparent rounded-lg py-1 transition-colors">
-                            <img src="src/assets/images/profile/dashboard/admin.svg" alt="">
-                            
-                            <a href="profile.html"  class="ml-2 ">Administration</a>
-                        </div> -->
                         <div class="flex pl-6 items-center mt-3 hover:bg-blue-500 bg-transparent rounded-lg py-1 transition-colors">
                             <img src="src/assets/images/profile/dashboard/admin.svg" alt="">
                             <a href="profile.html"  class="ml-2 ">Mes informations</a>
@@ -84,14 +72,14 @@ $personne = $upd->fetch(PDO::FETCH_ASSOC);
                 </div>
             </div>
             <!-- Logout Tab -->
-                <div class="flex flex-col mt-auto  overflow-hidden p-3" id="logout-wrapper">
-                    <div class="flex justify-between cursor-pointer" id="logout-header">
-                        <div class="flex items-center">
-                            <img src="src/assets/images/profile/dashboard/logout.svg" alt="" class="w-7 mr-3">
-                            <a href="admin.php">Déconnexion</a>
-                        </div>
+            <div class="flex flex-col mt-auto  overflow-hidden p-3" id="logout-wrapper">
+                <div class="flex justify-between cursor-pointer" id="logout-header">
+                    <div class="flex items-center">
+                        <img src="src/assets/images/profile/dashboard/logout.svg" alt="" class="w-7 mr-3">
+                        <a href="logout.php">Déconnexion</a>
                     </div>
                 </div>
+            </div>
         </section>
         <section class="w-5/6 h-screen bg-primary flex flex-col">
             <header class="w-full flex justify-between items-center p-8 border-b border-b-slate-200">
@@ -102,9 +90,37 @@ $personne = $upd->fetch(PDO::FETCH_ASSOC);
                     <div class="rounded-full h-8 w-8 avatar "></div>
                 </nav>
             </header>
+            <div class="p-8">
+                <h2>Liste des Utilisateurs</h2>
+                <table class="w-full">
+                    <thead>
+                        <tr>
+                            <th>Nom</th>
+                            <th>Prénom</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($users as $user): ?>
+                            <tr>
+                                <td class="text-center data-column"><?= $user['last_name'] ?></td>
+                                <td class="text-center data-column"><?= $user['first_name'] ?></td>
+                                <td class="text-center data-column"><?= $user['mail'] ?></td>
+                                <td class="text-center data-column"><?= $user['role_name'] ?></td>
+                                <td>
+                                    <button class="edit-user-btn" data-id="<?= $user['id']?>">Modifier</button>
+                                    <button class="delete-user-btn" data-id="<?= $user['id']?>"">Supprimer</button>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
         </section>
     </main>
-
     <script src="src/js/profile.js"></script>
+    <script src="src/js/admin.js"></script>
 </body>
 </html>

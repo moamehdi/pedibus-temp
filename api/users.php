@@ -6,7 +6,7 @@ header('Access-Control-Allow-Methods: GET, POST, DELETE, PATCH');
 header('Content-Type: application/json');
 header("Access-Control-Allow-Headers: *");
 
-
+//il faut fusionné user et users pour la methode get
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $personnes = $cnx->query("SELECT id, last_name, first_name, birthdate,address,zipcode,phone_number_1,phone_number_2,mail FROM user");
 
@@ -78,7 +78,6 @@ elseif ($_SERVER['REQUEST_METHOD'] == 'PATCH') {
 
     $setValues = [];
     $params = [];
-
     if (isset($data->last_name)) {
         $setValues[] = "last_name = ?";
         $params[] = $data->last_name;
